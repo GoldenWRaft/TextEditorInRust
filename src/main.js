@@ -175,7 +175,15 @@ $("body").keydown(async (e) => {
 
     if (content === "Switch file") {
       handleCommandPrompt(content, 1); // default to switch to 1st tab
-    } else handleCommandPrompt(content);
+    } 
+    else if (content === "Open file") {
+      const arg = await ask_for_file();
+        handleCommandPrompt(content, arg);
+    }
+    else handleCommandPrompt(content);
+
+    animateDiv(true, popup); // force exit command pallet
+    animateDiv(true, $("#cssStyling")); // force exit themes
   }
 });
 

@@ -70,6 +70,7 @@ async function manage_new_file() {
     window.path = info[0];
 
     let tabs_ = await get_tabs();
+    await manage_tabs(tabs_);
 
     update_active(tabs_.length);
 }
@@ -133,12 +134,10 @@ function update_words(content) {
 async function handle_open_file(path) {
     if (!path) return;
 
-    path = path.split('\\');
-    path = path[path.length - 1];
-
     let info = await open_file(path);
 
-    window.title.val(info[0]);
+    let extracted_title = info[0].split('\\');
+    window.title.val(extracted_title[extracted_title.length - 1]);
     window.editor.setData(info[1]);
     window.path = info[0];
 
