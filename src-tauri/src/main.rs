@@ -81,9 +81,8 @@ fn delete_file(path: String) -> u8 {
         });
 
         return 0;
-    } else {
-        return 1;
-    }
+
+    return 1;
 }
 
 #[tauri::command]
