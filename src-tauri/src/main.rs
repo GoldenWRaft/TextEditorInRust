@@ -26,8 +26,19 @@ struct Child {
     path: String,
 }
 
+#[cfg(target_os = "windows")]
 lazy_static! {
     static ref PATH: Mutex<String> = Mutex::new("%USERPROFILE%/Desktop".to_string());
+}
+
+#[cfg(target_os = "linux")]
+lazy_static! {
+    static ref PATH: Mutex<String> = Mutex::new("~/Desktop".to_string());
+}
+
+#[cfg(target_os = "macos")]
+lazy_static! {
+    static ref PATH: Mutex<String> = Mutex::new("~/Desktop".to_string());
 }
 
 #[tauri::command]

@@ -265,14 +265,12 @@ const options = {
   },
 };
 
-const sl = new List("suggestionContainer", options);
-const sc = document.getElementById("suggestionContainer");
-const list = document.getElementById("suggestionList");
 
 const searchInput = document.getElementById("searchInput");
 
 searchInput.addEventListener("input", (event) => {
   const query = event.target.value;
+  const sl = new List("suggestionContainer", options);
 
   sl.fuzzySearch(query);
 
@@ -280,7 +278,9 @@ searchInput.addEventListener("input", (event) => {
 });
 
 function updatePromptHeight() {
+  const list = document.getElementById("suggestionList");
   const newHeight = Math.min(list.children.length * 35, 500);
+  const sc = document.getElementById("suggestionContainer");
 
   $(sc).animate({ height: `${newHeight}px` }, 100);
 }
