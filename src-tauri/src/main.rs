@@ -92,7 +92,7 @@ fn delete_file(path: String) -> u8 {
         });
 
         return 0;
-
+    }
     return 1;
 }
 
