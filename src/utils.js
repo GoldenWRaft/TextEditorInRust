@@ -125,10 +125,15 @@ async function get_tabs() {
 
 function update_words(content) {
     const chars = content.length;
-    const words = content.match(/([^ ]+)/g)?.length || 0
+    const words = countWords(content);
 
     $('#chars').text(chars?.toLocaleString());
     $('#words').text(words?.toLocaleString());
+}
+
+function countWords(words){
+    var matches = words.match(/[\w\d\’\'-]+/gi);
+  return matches ? matches.length : 0;
 }
 
 async function handle_open_file(path) {
