@@ -8,6 +8,11 @@ on:
     tags:
       - 'v*.*.*'
 
+
+defaults:
+  run:
+    working-directory: ./src-tauri
+    
 jobs:
   style:
     name: Check Style
@@ -23,11 +28,7 @@ jobs:
           components: rustfmt
           profile: minimal
           override: true
-
-      # - name: cd src-tauri
-      #   shell: bash
-      #   run: cd src-tauri
-
+          
       - name: Cargo Check
         run: |
           cd ./src-tauri
@@ -38,10 +39,6 @@ jobs:
     name: Test
     needs: [style]
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: ./src-tauri
 
     strategy:
       matrix:
