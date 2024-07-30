@@ -28,12 +28,10 @@ jobs:
       #   shell: bash
       #   run: cd src-tauri
 
-      - name: cargo fmt -- --check
-        uses: actions-rs/cargo@v1
-        with:
-          path: "scr-tauri"
-          command: fmt
-          args: --all -- --check
+      - name: Cargo Check
+        run: |
+          cd ./src-tauri
+          cargo fmt -- --check
 
 
   test:
