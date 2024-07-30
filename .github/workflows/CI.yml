@@ -31,7 +31,6 @@ jobs:
           
       - name: Cargo Check
         run: |
-          cd ./src-tauri
           cargo fmt -- --check
 
 
