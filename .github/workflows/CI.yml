@@ -33,7 +33,6 @@ jobs:
         run: |
           cargo fmt -- --check
 
-
   test:
     name: Test
     needs: [style]
@@ -82,6 +81,7 @@ jobs:
         with:
           command: test
           args: --benches ${{ matrix.features }}
+  
   deploy:
     name: deploy
     needs: [test]
