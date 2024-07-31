@@ -7,16 +7,16 @@ on:
       - main
     tags:
       - 'v*.*.*'
-
-
-defaults:
-  run:
-    working-directory: ./src-tauri
     
 jobs:
   style:
     name: Check Style
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./src-tauri
+        
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -38,6 +38,10 @@ jobs:
     name: Test
     needs: [style]
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./src-tauri
 
     strategy:
       matrix:
