@@ -40,7 +40,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./src-tauri
+        working-directory: src-tauri
 
     strategy:
       matrix:
@@ -54,6 +54,7 @@ jobs:
 
     steps:
       - name: Setup Env
+        shell: bash
         run: |
           apt update
           apt install apt-file
