@@ -53,6 +53,13 @@ jobs:
             benches: true
 
     steps:
+      - name: Setup Env
+        run: |
+          apt update
+          apt install apt-file
+          apt-file update
+          apt-file search gdk-3.0
+    
       - name: Checkout
         uses: actions/checkout@v1
 
