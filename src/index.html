@@ -41,9 +41,20 @@
     <div id="cssStyling" style="display: none">
       <h1>Themes</h1>
 
-      <div id="cssGrid" style="overflow-x: auto;">
-        <div class="theme" style="background-color: #0f0f0f; color: white;" onclick="changeTheme('/themes/default.css')">Default</div>
-        <div class="theme" style="background-color: #e8e1d2; color: #0f0f0f;" onclick="changeTheme('/themes/coffee.css')">Coffee</div>
+      <div id="cssGridVert">
+        <div style="border-bottom: 2px solid white; padding-bottom: 10px;">
+          <h4>Dark Themes</h4>
+          <div id="cssGrid">
+            <div class="theme" style="background-color: #0f0f0f; color: white;" onclick="changeTheme('/themes/default.css')">Drax</div>
+            <div class="theme" style="background-color: #111; color: white;" onclick="changeTheme('/themes/mythacker.css')">Hacker</div>
+          </div>
+        </div>
+        <div>
+          <h4>Light Themes</h4>
+          <div id="cssGrid">
+            <div class="theme" style="background-color: #e8e1d2; color: #0f0f0f;" onclick="changeTheme('/themes/coffee.css')">Coffee</div>
+          </div>
+        </div>
       </div>
 
       <input id="themeInput" class="input" enterkeyhint="done" type="text" placeholder="URL..." style="padding: 10px; margin-top: 15px; width: 350px">

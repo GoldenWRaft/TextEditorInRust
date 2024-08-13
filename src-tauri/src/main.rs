@@ -126,6 +126,12 @@ fn new_file() -> (String, String) {
 
     let title = "Untitled ".to_owned() + &id;
     let path = PathBuf::from(PATH.lock().unwrap().clone()).join(format!("{}.md", &title));
+    
+
+    let check_child_count = get_open_file_count();
+    if check_child_count.1.contains("Cannot") {
+        return ("".to_string(), "".to_string());
+    }
 
     let _ = fs::write(&path, "");
 
@@ -133,6 +139,24 @@ fn new_file() -> (String, String) {
     update_opened(title.to_owned(), true);
 
     return (title, "".to_string());
+}
+
+fn get_open_file_count() -> (usize, String) {
+    let json_path = PathBuf::from(PATH.lock().unwrap().clone()).join("config.json");
+    let contents = fs::read_to_string(&json_path).expect("Failed to read configuration.");
+
+    let mut json_contents: Value = serde_json::from_str(&contents).expect("Failed to parse JSON");
+
+    let child_count: usize = json_contents["children"]
+        .as_array_mut()
+        .expect("children should be an array")
+        .len();
+
+    if child_count > 9 {
+        return (child_count, String::from("Cannot have more than 10 files open"));
+    }
+
+    (child_count, String::from("No errors"))
 }
 
 fn push_child(id: String, path: &String) {
